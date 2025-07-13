@@ -1,6 +1,6 @@
-# PingU.RO
+# PingU
 
-PingU.RO is a WhatsApp powered CRM web application that lets you manage contacts, appointments and marketing campaigns. It uses **wa-automate-nodejs** for WhatsApp messaging and **MongoDB** for persistence.
+PingU is a WhatsApp powered CRM web application that lets you manage contacts, appointments and marketing campaigns. It uses **wa-automate-nodejs** for WhatsApp messaging and **MongoDB** for persistence.
 
 ## Features
 
@@ -92,6 +92,20 @@ This creates a user `test@pingu.ro` with password `password`.
 3. Connect your WhatsApp account via QR code
 4. Add contacts and schedule appointments or campaigns
 5. Reminders and campaign messages are sent automatically
+
+## Brand Palette
+
+PingU uses a palette inspired by cold arctic tones and modern SaaS design.
+
+- **Primary:** `#0ea5e9`
+- **Accent:** `#1e3a8a`
+- **Secondary:** `#3b82f6`
+- **Light Background:** `#f0f8ff`
+- **Dark Background:** `#1f2937`
+
+All text uses the **Inter** font for a clean, modern feel. Light and dark themes can be toggled from the navigation bar.
+
+The frontend supports light and dark modes and a Romanian/English language toggle.
 
 ## Production Notes
 
