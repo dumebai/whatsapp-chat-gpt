@@ -1,0 +1,9 @@
+version: '3'
+services:
+  backend:
+    build: .
+    environment:
+      - MONGODB_URI=${MONGODB_URI}
+      - PORT=5000
+    ports:
+      - "5000:5000"
