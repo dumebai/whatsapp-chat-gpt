@@ -3,6 +3,9 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
+import LandingPage from './pages/LandingPage';
+import './i18n';
+import { ThemeProvider } from './contexts/ThemeContext';
 import Landing from './pages/Landing';
 import Navbar from './Navbar';
 import Footer from './Footer';
@@ -18,6 +21,16 @@ export default function App() {
   };
 
   return (
+    <ThemeProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<LandingPage authenticated={!!token} />} />
+          <Route path="/login" element={token ? <Navigate to="/dashboard" /> : <Login onSuccess={handleLogin} />} />
+          <Route path="/register" element={token ? <Navigate to="/dashboard" /> : <Register />} />
+          <Route path="/dashboard" element={token ? <Dashboard /> : <Navigate to="/login" />} />
+        </Routes>
+      </BrowserRouter>
+    </ThemeProvider>
     <AppProvider>
       <BrowserRouter>
         <Navbar />
