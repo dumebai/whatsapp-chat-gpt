@@ -1,0 +1,105 @@
+:root {
+  --color-bg: #f0f8ff;
+  --color-primary: #0ea5e9;
+  --color-accent: #1e3a8a;
+  --color-secondary: #3b82f6;
+  --color-text: #222;
+}
+[data-theme='dark'] {
+  --color-bg: #1f2937;
+  --color-text: #f9fafb;
+  --color-primary: #38bdf8;
+  --color-accent: #60a5fa;
+  --color-secondary: #93c5fd;
+}
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'Inter', Arial, sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.section {
+  padding: 4rem 0;
+}
+
+.section-alt {
+  background: var(--color-secondary);
+  color: white;
+}
+.navbar {
+  background-color: var(--color-accent);
+  color: white;
+  padding: 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.navbar a {
+  color: white;
+  margin-right: 1rem;
+  text-decoration: none;
+}
+.navbar a:last-child {
+  margin-right: 0;
+}
+.theme-toggle,
+.lang-toggle {
+  cursor: pointer;
+  margin-left: 1rem;
+  background: var(--color-primary);
+  border: none;
+  color: white;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+}
+.hero {
+  text-align: center;
+  padding: 4rem 1rem;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  color: white;
+}
+
+.card {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+[data-theme='dark'] .card {
+  background: #374151;
+}
+.btn-primary {
+  display: inline-block;
+  background: var(--color-primary);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  text-decoration: none;
+  margin-top: 1rem;
+  transition: background 0.2s ease-in-out;
+}
+
+.btn-primary:hover {
+  background: var(--color-accent);
+}
+
+.footer {
+  background: var(--color-accent);
+  color: white;
+  padding: 1rem 0;
+}

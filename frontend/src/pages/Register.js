@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { useText } from '../useText';
 
 export default function Register() {
+  const t = useText();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
@@ -20,9 +22,9 @@ export default function Register() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-sky-50 to-blue-100 p-4">
-      <div className="bg-white shadow-xl rounded-lg p-8 w-full max-w-md">
-        <h2 className="text-2xl font-bold mb-4 text-center text-gray-800">Join the Penguin Colony</h2>
+    <div className="min-h-screen section flex items-center justify-center">
+      <div className="card w-full max-w-md">
+        <h2 className="text-2xl font-bold mb-4 text-center text-gray-800">{t.register}</h2>
         {message && <p className="text-green-600 mb-2 text-center">{message}</p>}
         {error && <p className="text-red-600 mb-2 text-center">{error}</p>}
         <input
@@ -42,10 +44,10 @@ export default function Register() {
           onClick={register}
           className="w-full bg-black text-white py-2 rounded hover:bg-gray-800 transition"
         >
-          Register
+          {t.register}
         </button>
         <p className="mt-3 text-sm text-center">
-          Already have an account? <Link className="text-blue-600" to="/">Login</Link>
+          {t.haveAccount} <Link className="text-blue-600" to="/login">{t.login}</Link>
         </p>
       </div>
     </div>
