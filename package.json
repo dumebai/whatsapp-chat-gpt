@@ -1,18 +1,9 @@
 {
-  "name": "whatsapp",
-  "version": "1.0.0",
-  "main": "index.js",
+  "name": "pingu-ro",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
-  "dependencies": {
-    "@open-wa/wa-automate": "^4.76.0",
-    "dotenv": "^17.0.1",
-    "openai": "^4.30.0"
+    "start:backend": "node backend/app.js",
+    "start:frontend": "cd frontend && npm start",
+    "seed": "node test/seed.js"
   }
 }

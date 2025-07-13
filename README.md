@@ -1,79 +1,124 @@
+# PingU.RO
 
-# 🤖 WhatsApp Chat GPT Bot (OpenAI + @open-wa/wa-automate)
+PingU.RO is a WhatsApp powered CRM web application that lets you manage contacts, appointments and marketing campaigns. It uses **wa-automate-nodejs** for WhatsApp messaging and **MongoDB** for persistence.
 
-This is a lightweight WhatsApp bot that responds to private messages with financial market predictions using OpenAI's GPT-3.5 model. It uses [@open-wa/wa-automate](https://github.com/open-wa/wa-automate-nodejs) to interface with WhatsApp Web.
+## Features
 
----
+- User registration with email verification
+- JWT based login/logout
+- Connect your WhatsApp account and keep the session persistent
+- Manage contacts individually or via CSV import
+- Schedule appointments with WhatsApp reminders
+- Create marketing campaigns sent via WhatsApp
+- Optional test mode to avoid sending real messages
 
-## ⚙️ Features
+## Project Structure
 
-- Auto-responds to incoming private WhatsApp messages
-- Uses ChatGPT to provide financial insights and predictions
-- Short, confident responses in expert tone
-
----
-
-## 📦 Setup Instructions
-
-### 1. Clone or download this repo
-
-```bash
-git clone https://github.com/dumebai/whatsapp-chat-gpt.git
-cd whatsapp-chat-gpt
+```
+/backend - Express API
+/frontend - React app
+/shared  - shared interfaces
+/test    - seed scripts
 ```
 
-### 2. Install required packages
+## Installation
+
+### Backend
 
 ```bash
+cd backend
 npm install
 ```
 
-### 3. Create a `.env` file
-
-Inside the root directory, create a `.env` file:
-
-```env
-OPENAI_API_KEY=sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-```
-
-You can get your API key from [https://platform.openai.com/account/api-keys](https://platform.openai.com/account/api-keys)
-
----
-
-## 🚀 Run the Bot
+### Frontend
 
 ```bash
+cd ../frontend
+npm install
+```
+
+## Environment Variables
+
+Create `.env` in the project root or inside backend with the following keys (see `.env.example`):
+
+```env
+WHATSAPP_SESSION_PATH=./sessions/
+WHATSAPP_CHROMIUM_ARGS=--no-sandbox --disable-setuid-sandbox
+MONGODB_URI=mongodb+srv://user:pass@cluster.mongodb.net/dbname
+JWT_SECRET=supersecret
+JWT_EXPIRES_IN=1d
+SMTP_HOST=smtp.example.com
+SMTP_PORT=465
+SMTP_USER=user@example.com
+SMTP_PASS=password
+OPENAI_API_KEY=sk-...
+BASE_URL=http://localhost:5000
+FRONTEND_URL=http://localhost:3000
+TEST_MODE=true
+```
+
+For the React frontend copy `frontend/.env.example` to `frontend/.env` and adjust the API base URL if needed.
+
+## Running in Development
+
+Start the backend API:
+
+```bash
+cd backend
+npm run dev
+```
+
+In a new terminal start the frontend:
+
+```bash
+cd frontend
 npm start
 ```
 
-A QR code will appear in the terminal – scan it using your WhatsApp mobile app to activate the session.
+Scan the QR displayed in the backend terminal to connect WhatsApp.
 
----
+## Seed Data
 
-## 💬 Example Prompts
+```
+npm run seed
+```
 
-- “What's your take on Bitcoin this week?”
-- “Is it a good time to invest in Tesla?”
-- “What's the market sentiment for Ethereum?”
-- “Will inflation go down in the next quarter?”
+This creates a user `test@pingu.ro` with password `password`.
 
----
+## Usage
 
-## 🧠 Tech Stack
+1. Register a new account and verify your email
+2. Login to access the dashboard
+3. Connect your WhatsApp account via QR code
+4. Add contacts and schedule appointments or campaigns
+5. Reminders and campaign messages are sent automatically
 
-- `@open-wa/wa-automate` – for WhatsApp automation
-- `openai` – to communicate with GPT-3.5
-- `dotenv` – to securely load environment variables
+## Production Notes
 
----
+To build for production run:
+```bash
+cd frontend
+npm run build
+```
+Copy the `build` folder to your preferred static host or configure your Node.js server to serve it. The backend can be started with:
+```bash
+node backend/app.js
+```
 
-## 🔒 Notes
 
-- This bot only responds to **private messages**, not group chats.
-- Make sure to **keep your OpenAI key private** and monitor usage limits to avoid unexpected charges.
+- The frontend can be deployed to **Vercel**.
+- Any Node.js hosting supporting MongoDB can run the backend.
 
----
+### Docker
 
-## 📜 License
+```bash
+docker-compose up --build
+```
 
-MIT – free to use, modify, and commercialize with attribution. If you find this useful, give credit or build something big with it 🚀
+### CI
+
+GitHub Actions validates the backend on each push by installing dependencies and checking the database connection.
+
+## License
+
+MIT
